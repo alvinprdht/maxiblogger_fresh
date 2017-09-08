@@ -69,6 +69,11 @@ class ResponseFactory implements FactoryContract
         return $this->make($this->view->make($view, $data), $status, $headers);
     }
 
+    public function viewAdmin($view, $data = [], $status = 200, array $headers = [])
+    {
+        return $this->make($this->view->make($view, $data), $status, $headers);
+    }
+
     /**
      * Return a new JSON response from the application.
      *

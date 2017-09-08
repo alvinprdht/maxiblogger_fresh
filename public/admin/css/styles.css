@@ -1,0 +1,28 @@
+#leftmenu
+{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    left: 0px;
+    top: 0px;
+    padding-top: 50px;
+    overflow-y: scroll;
+}
+
+#leftmenu h4
+{
+    padding-left: 20px;
+}
+
+.admin-content
+{    
+    width: 100%;
+    height: 100%;
+    padding-left: 300px;
+}
+.admin-content .container
+{
+    width: 100% !important;
+    padding-top: 55px;
+}

@@ -133,6 +133,10 @@ if (! function_exists('asset')) {
     {
         return app('url')->asset($path, $secure);
     }
+    function assetAdmin($path, $secure = null)
+    {
+        return app('url')->asset('admin/'.$path, $secure);
+    }
 }
 
 if (! function_exists('auth')) {
@@ -883,5 +887,16 @@ if (! function_exists('view')) {
         }
 
         return $factory->make($view, $data, $mergeData);
+    }
+
+    function viewAdmin($view = null, $data = [], $mergeData = [])
+    {
+        $factory = app(ViewFactory::class);
+
+        if (func_num_args() === 0) {
+            return $factory;
+        }
+
+        return $factory->make('admin/pages/'.$view, $data, $mergeData);
     }
 }
