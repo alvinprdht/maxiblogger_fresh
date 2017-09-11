@@ -896,7 +896,6 @@ if (! function_exists('view')) {
         if (func_num_args() === 0) {
             return $factory;
         }
-
         return $factory->make('admin/pages/'.$view, $data, $mergeData);
     }
 }

@@ -1,31 +1,53 @@
+<?php 
+    $get_MasterAdminMenu = \App\AdminMenu::get();
+    $menu = array();
+    foreach($get_MasterAdminMenu as $getSection)
+    {
+        if($getSection->level == 1)
+        {
+            $arr_menu = array();
+            $arr_menu['name'] = $getSection->name;
+            $arr_menu['submenu'] = array();
+            foreach($get_MasterAdminMenu as $getMenu)
+            {
+                if($getMenu->level == 2 && $getMenu->parent == $getSection->id)
+                {
+                    array_push($arr_menu['submenu'], $getMenu->name);
+                }
+            }
+            array_push($menu, $arr_menu);
+        }
+    }
+?>
+
 <div id="leftmenu">
-    <h4>Dashboard</h4>
-    <ul>
-        <li><a href="#">Visitors</a></li>
-        <li><a href="#">Activities</a></li>
-    </ul>
-    <hr/>
-    <h4>Content</h4>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Post</a></li>
-        <li><a href="#">Album</a></li>
-        <li><a href="#">Newsletter</a></li>
-        <li><a href="#">Ebook</a></li>
-        <li><a href="#">Ebook</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-    <hr/>
-    <h4>Website</h4>
-    <ul>
-        <li><a href="#">Site Design</a></li>
-        <li><a href="#">Pages</a></li>
-        <li><a href="#">Setting</a></li>
-    </ul>
-    <hr/>
-    <h4>Manage</h4>
-    <ul>
-        <li><a href="#">Users</a></li>
-        <li><a href="#">Blog</a></li>
-    </ul>
+
+    <!--?php var_dump($menu); ?-->
+    
+    @if(count($menu) > 0)
+
+        @foreach($menu as $menus)
+
+            <h4>{{ $menus['name'] }}</h4>
+
+            @if(count($menus['submenu'] > 0))
+                
+                <ul>
+
+                @foreach($menus['submenu'] as $submenus)
+
+                    <li><a href="{{ URL::to('admin-maxiblogger/'.$submenus) }}">{{ $submenus }}</a></li>
+
+                @endforeach
+
+                </ul>
+
+            @endif
+
+            <hr/>
+
+        @endforeach
+
+    @endif
+
 </div>

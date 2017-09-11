@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin-maxiblogger', 'AdminController@index')->name('AdminIndex');
+Route::get('/admin-maxiblogger/{module?}/{submodule?}', 'AdminController@index')->name('AdminIndex');
+
+Route::post('/admin-maxiblogger/{module?}/{submodule?}', 'AdminController@postAction')->name('PostAction');
