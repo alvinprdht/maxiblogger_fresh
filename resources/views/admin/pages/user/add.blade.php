@@ -17,6 +17,14 @@
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="form-group">
+                            <label for="role">Role</label>
+                            <select class="form-control" id="role" name="role" >
+                                @foreach($role as $temp)
+                                    <option value="{{$temp['id']}}">{{ $temp['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                            {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="Submit">
                         </div>

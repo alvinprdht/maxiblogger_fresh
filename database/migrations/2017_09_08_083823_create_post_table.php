@@ -13,19 +13,26 @@ class CreatePostTable extends Migration
      */
     public function up()
     {
-        Schema::create('post', function (Blueprint $table) {
-            $table->increments('id')->length(3);
-            $table->string('title',255);
-            $table->text('content');
-            $table->tinyInteger('status')->length(1)->unsigned();
-            $table->string('featured_images',255);
-            $table->tinyInteger('created_by')->length(3)->unsigned();
-            $table->tinyInteger('published_by')->length(3)->unsigned();
-            $table->string('tags',255)->nullable();
-            $table->tinyInteger('category_id')->unsigned();
-            $table->tinyInteger('is_hide')->length(1)->unsigned();
-            $table->timestamps();
-        });
+        if (Schema::hasTable('post'))  
+        {
+
+        }
+        else
+        {
+            Schema::create('post', function (Blueprint $table) {
+                $table->increments('id')->length(3);
+                $table->string('title',255);
+                $table->text('content');
+                $table->tinyInteger('status')->length(1)->unsigned();
+                $table->string('featured_images',255);
+                $table->tinyInteger('created_by')->length(3)->unsigned();
+                $table->tinyInteger('published_by')->length(3)->unsigned();
+                $table->string('tags',255)->nullable();
+                $table->tinyInteger('category_id')->unsigned();
+                $table->tinyInteger('is_hide')->length(1)->unsigned();
+                $table->timestamps();
+            });
+        }
     }
     
     /**
@@ -35,6 +42,6 @@ class CreatePostTable extends Migration
      */
     public function down()
     {
-        Schema::drop('flights');
+        
     }
 }

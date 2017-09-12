@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Tamael\Admin\UserManager;
+use Tamael\Admin\RoleManager;
 
 class UserController 
 {
@@ -13,7 +15,17 @@ class UserController
      */
 
     private static $post;
+    private static $UM;
+    private static $RM;
 
+    public function __construct()
+    {
+        $UM = new UserManager;
+        $RM = new RoleManager;
+        SELF::$UM = $UM;
+        SELF::$RM = $RM;
+    }
+    
     public function getFunction($submodule = null, $postRequest = null)
     {
 
@@ -42,11 +54,13 @@ class UserController
     {
         if(SELF::$post)
         {
-            
+            return SELF::$UM->add(SELF::$post);
         }
         else
         {
-            return viewAdmin('user/add');
+            $data = array();
+            $data['role'] = SELF::$RM->get();
+            return viewAdmin('user/add', $data);
         }
     }
 

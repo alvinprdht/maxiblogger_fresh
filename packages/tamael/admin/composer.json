@@ -1,0 +1,13 @@
+{
+    "name": "tamael/admin",
+    "description": "Package for maxiblogger administrator",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mochammad Alfin Faturochman",
+            "email": "final20.ap@gmail.com"
+        }
+    ],
+    "minimum-stability": "yes",
+    "require": {}
+}

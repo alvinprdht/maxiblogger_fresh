@@ -13,15 +13,22 @@ class CreateAdminMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_menu', function (Blueprint $table) {
-            $table->increments('id')->length(3);
-            $table->tinyInteger('role_id')->length(3)->unsigned();
-            $table->string('name',255);
-            $table->tinyInteger('level')->length(1)->unsigned();
-            $table->tinyInteger('parent')->length(1)->unsigned();
-            $table->tinyInteger('status')->length(1)->unsigned();
-            $table->timestamps();
-        });
+        if (Schema::hasTable('admin_menu'))  
+        {
+            
+        }
+        else
+        {
+            Schema::create('admin_menu', function (Blueprint $table) {
+                $table->increments('id')->length(3);
+                $table->tinyInteger('role_id')->length(3)->unsigned();
+                $table->string('name',255);
+                $table->tinyInteger('level')->length(1)->unsigned();
+                $table->tinyInteger('parent')->length(1)->unsigned();
+                $table->tinyInteger('status')->length(1)->unsigned();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

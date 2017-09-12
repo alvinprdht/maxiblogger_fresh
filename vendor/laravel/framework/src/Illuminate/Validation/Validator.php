@@ -631,6 +631,11 @@ class Validator implements ValidatorContract
         return $this->messages();
     }
 
+    public function success($successMessage)
+    {
+        return '{"success":["'.$successMessage.'"]}';
+    }
+
     /**
      * Get the messages for the instance.
      *
