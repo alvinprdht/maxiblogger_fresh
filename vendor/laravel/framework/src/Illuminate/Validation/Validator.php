@@ -633,7 +633,8 @@ class Validator implements ValidatorContract
 
     public function success($successMessage)
     {
-        return '{"success":["'.$successMessage.'"]}';
+        $content = json_encode(array('success'=>$successMessage));
+        return response($content)->withHeaders(['Content-type' => 'application/json']);
     }
 
     /**

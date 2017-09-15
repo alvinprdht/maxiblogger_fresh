@@ -1,13 +1,14 @@
 @extends('admin.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Add User</div>
                 <div class="panel-body">
-                    <form method="POST" action="{{ URL::to(Session('childURL')) }}" class="">
+                    <form method="POST" action="{{ Manager::to('self') }}" class="ajaxForm" after-submit="{{ Manager::to('parents') }}">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email">

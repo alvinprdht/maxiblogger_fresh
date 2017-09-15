@@ -232,6 +232,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        
+        'Manager' => Tamael\Admin\AdminManagerController::class,
     ],
 
     'url-admin' => 'admin-maxiblogger',

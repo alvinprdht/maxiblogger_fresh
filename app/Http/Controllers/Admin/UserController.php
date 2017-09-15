@@ -47,7 +47,7 @@ class UserController
 
     private function index()
     {
-        return viewAdmin('user/home');
+        return viewAdmin('user/home', SELF::$UM->getData());
     }
 
     private function add()

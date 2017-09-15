@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected static function boot()
+    {
+        static::creating(function ($model){
+            if($model->name == '')
+                $model->name = $model->email;
+            $model->password = bcrypt($model->password);
+            return true;
+        });
+    }
+
 }

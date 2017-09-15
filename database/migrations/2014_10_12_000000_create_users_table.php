@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             }
             else
             {
-
+                $table->tinyInteger('name')->default('');
             }
         }
         else

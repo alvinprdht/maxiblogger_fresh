@@ -32,12 +32,11 @@ class UserManager extends Controller
             else
             {
                 SELF::$ModelUser->create([
-                    'email' => $post->get('email')
+                    'email' => $post->get('email'),
+                    'password' => $post->get('password'),
+                    'role' => $post->get('role'),
                 ]);
                 
-                SELF::$ModelUser->password = $post->get('email');
-                SELF::$ModelUser->role = $post->get('role');
-                SELF::$ModelUser->save();
                 return $validator->success('User created !');
             }
         }
@@ -45,6 +44,12 @@ class UserManager extends Controller
         {
                
         }
+    }
+
+    public function getData()
+    {
+        $data = SELF::$ModelUser->Get();
+        return array('data' => $data);
     }
  
 }
