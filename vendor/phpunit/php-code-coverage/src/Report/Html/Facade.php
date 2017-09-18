@@ -51,7 +51,7 @@ class Facade
         $this->generator      = $generator;
         $this->highLowerBound = $highLowerBound;
         $this->lowUpperBound  = $lowUpperBound;
-        $this->templatePath   = __DIR__ . '/Renderer/Template/';
+        // $this->templatePath   = __DIR__ . '/Renderer/Template/';
     }
 
     /**

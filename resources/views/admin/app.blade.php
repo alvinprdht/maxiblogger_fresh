@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ assetAdmin('css/app.css') }}" rel="stylesheet">
     <link href="{{ assetAdmin('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ assetAdmin('css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="ajaxModal" class="modal fade" role="dialog">
@@ -102,5 +103,11 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ assetAdmin('js/form.js') }}"></script>
+    <script src="{{ assetAdmin('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ assetAdmin('js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ assetAdmin('js/global.js') }}"></script>
+
+    @yield('script')
+
 </body>
 </html>

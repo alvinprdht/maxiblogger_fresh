@@ -7,11 +7,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">User</div>
                 <div class="panel-body">
-                    <a href="{{ URL::to(Session('childURL').'/role') }}">Role</a>
-                    <a href="{{ URL::to(Session('childURL').'/add') }}">Add User</a>
-                    <a href="{{ URL::to(Session('childURL').'/list') }}">All User</a>
+                    <a href="{{ Manager::to('role','self') }}">Role</a>
+                    <a href="{{ Manager::to('add','self') }}">Add User</a>
+                    <a href="{{ Manager::to('list','self') }}">All User</a>
 
-                    <table class="table">
+                    <table id="table_user" class="table">
                         <thead>
                             <th>Name</th>
                             <th>Email</th>
@@ -19,21 +19,30 @@
                             <th>Role</th>
                             <th>Created At</th>
                         </thead>
+                        <tbody>
                         @foreach($data as $object)
-                        <tr>
-                            <td>{{ $object->name }}<td>
-                            <td>{{ $object->email }}<td>
-                            <td>{{ $object->status }}<td>
-                            <td>{{ $object->role }}<td>
-                            <td>{{ $object->created_at }}<td>
-                        </tr>
+                            <tr>
+                                <td>{{ $object->name }}</td>
+                                <td>{{ $object->email }}</td>
+                                <td>{{ $object->status }}</td>
+                                <td>{{ $object->role }}</td>
+                                <td>{{ $object->created_at }}</td>
+                            </tr>
                         @endforeach
+                        </tbody>
                     </table>
-
-                    {{ $data }}
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function(){ 
+        $('#table_user').DataTable();
+    })
+</script>
 @endsection

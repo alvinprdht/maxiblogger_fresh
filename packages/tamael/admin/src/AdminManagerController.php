@@ -31,10 +31,12 @@ class AdminManagerController extends Controller
         {
             unset($segment[count($segment) - 1]);
             $stringURL = implode('/', $segment);
-            return $stringURL.($pagename != '')?'/'.$pagename:'';
+            return $stringURL.(($pagename != '')?'/'.$pagename:'');
         }
         elseif($state == 'self' || $pagename == 'self')
-            return $stringURL.($pagename != '')?'/'.$pagename:'';
+        {
+            return $stringURL.(($pagename != '')?'/'.$pagename:'');
+        }
         else
             return URL::to(config('app.url-admin').($pagename != '')?'/'.$pagename:'');
     }
